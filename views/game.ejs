@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Air Hockey Game</title>
+  <link rel="stylesheet" href="/game.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
+
+</head>
+<body style="overflow: hidden;font-family: 'Russo One', sans-serif;
+">
+
+
+<% if(isAuth)
+{%>
+
+
+<div class="table">
+  <div class="table-inner">
+    <span class="table__goal-crease circle"></span>
+    <span class="table__faceoff table__faceoff--top-left circle"></span>
+    <span class="table__faceoff table__faceoff--bottom-left circle"></span>
+    <span class="table__blue-line"></span>
+    <span class="table__center-line"></span>
+    <span class="circle"></span>
+    <span class="table__blue-line table__blue-line--two"></span>
+    <span class="table__faceoff table__faceoff--top-right circle"></span>
+    <span class="table__faceoff table__faceoff--bottom-right circle"></span>
+    <span class="table__goal-crease table__goal-crease--two circle"></span>
+  </div>
+</div>
+<div class="scorecardp2" style="height:170px;width: 400px;background: linear-gradient(180deg,#31ff61,#1faa1c);float: right; box-sizing: border-box;border: 2px green;border-radius: 55px; ">
+	<section>
+<center><div class="avatar-p2" style="height: 80px;width: 150px;background-color: white;transform: translateY(2px);border-radius: 30px;font-size: 80px;">0</div>
+</center>	
+</section>
+
+</div>
+
+
+<div class="scorecardp1" style="height:170px;width: 400px;background: linear-gradient(180deg,#31ff61,#1faa1c);border-radius: 55px; ">
+	<center><div class="avatar-p1" style="height: 80px;width:150px;background-color: white;transform: translateY(3px);border-radius: 30px;font-size: 80px;">0</div>
+    
+      </center>
+
+</div>
+  <p style="font-family: 'Russo One',sans-serif;transform: translate3d(150px,-80px,0);font-size:20px;  "><%=p1name%><p>
+<%    if(!issingle)
+    {%>
+
+
+    <p style="font-family: 'Russo One',sans-serif;float: right;transform:translate3d(-180px,-150px,0); font-size: 20px;"><%=p2name %><p>
+       <%}
+       else
+       {%>
+  <p style="font-family: 'Russo One',sans-serif;float: right;transform:translate3d(-180px,-150px,0); font-size: 20px;">COMP<p>
+       <%}
+    %>
+<div class="goal-celebration" style="width: 100%;height: 300px; ;background-color: white;z-index: 999999999999999;position: absolute;margin-top: 20px;">
+
+	<center><p style="font-family: 'Russo One',sans-serif;font-size: 180px;transform: translate3d(-120px,-150px,0);color: black ">G<i class="fas fa-futbol fa-1x" style="color: black;font-size: 9rem;font-weight: 100;"></i>AL</p></center>
+</div>
+<canvas id="canvas" class="table table--canvas" tabindex="0"></canvas>
+
+<%}
+
+%>
+
+
+<script src="https://use.fontawesome.com/b78753db1d.js"></script>
+<script src="/jquery-3.4.1.min.js"></script>
+<% if(issingle){%>
+
+  <script type="text/javascript" src="/gamescript.js"></script>
+
+<%}
+%>
+<%if(!issingle){%>
+  <script type="text/javascript" src="/gamescript2.js"></script>
+<% }
+%>
+
+<script  src="js/bootstrap.bundle.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Air Hockey Game</title>
+  <link rel="stylesheet" href="css/game.css">
+  <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
+
+</head>
+<body style="overflow: hidden;font-family: 'Russo One', sans-serif;
+">
+
+
+<div class="table">
+  <div class="table-inner">
+    <span class="table__goal-crease circle"></span>
+    <span class="table__faceoff table__faceoff--top-left circle"></span>
+    <span class="table__faceoff table__faceoff--bottom-left circle"></span>
+    <span class="table__blue-line"></span>
+    <span class="table__center-line"></span>
+    <span class="circle"></span>
+    <span class="table__blue-line table__blue-line--two"></span>
+    <span class="table__faceoff table__faceoff--top-right circle"></span>
+    <span class="table__faceoff table__faceoff--bottom-right circle"></span>
+    <span class="table__goal-crease table__goal-crease--two circle"></span>
+  </div>
+</div>
+<div class="scorecardp2" style="height:170px;width: 400px;background: linear-gradient(180deg,#31ff61,#1faa1c);float: right; box-sizing: border-box;border: 2px green;border-radius: 55px; ">
+	<section>
+<center><div class="avatar-p2" style="height: 80px;width: 150px;background-color: white;transform: translateY(2px);border-radius: 30px;font-size: 80px;">0</div></center>	
+</section>
+</div>
+
+<div class="scorecardp1" style="height:170px;width: 400px;background: linear-gradient(180deg,#31ff61,#1faa1c);border-radius: 55px; ">
+	<center><div class="avatar-p1" style="height: 80px;width:150px;background-color: white;transform: translateY(3px);border-radius: 30px;font-size: 80px;">0</div></center>
+</div>
+<div class="goal-celebration" style="width: 100%;height: 300px; ;background-color: white;z-index: 999999999999999;position: absolute;margin-top: 80px;">
+
+	
+</div>
+<canvas id="canvas" class="table table--canvas" tabindex="0"></canvas>
+
+
+
+
+
+<script src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/gamescript.js"></script>
+   <script type="text/javascript" src="js/DOM.js"></script>
+
+<script  src="js/bootstrap.bundle.js"></script>
+
+</body>
+</html>
