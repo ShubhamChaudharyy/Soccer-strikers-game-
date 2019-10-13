@@ -3,3 +3,15 @@ HOW TO PLAY:
 
 Some Screen Captures of Game:
 
+![alt text](https://github.com/ShubhamChaudharyy/Air-Hockey/blob/master/img/Screenshot%20(136).png)
+
+
+
+*Goal Screen*
+
+
+
+
+![alt text](https://github.com/ShubhamChaudharyy/Air-Hockey/blob/master/img/Screenshot%20(134).png)
+
+
