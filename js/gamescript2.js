@@ -1,6 +1,19 @@
 
 var p2score=0;
 var p1score=0;
+var socket;
+let hit = new Audio();
+let wall = new Audio();
+let userScore = new Audio();
+let comScore = new Audio();
+let stadium= new Audio();
+
+hit.src = "sounds/hit.mp3";
+wall.src = "sounds/wall.mp3";
+comScore.src = "sounds/comScore.mp3";
+userScore.src = "sounds/userScore.mp3";
+stadium.src="sounds/stadium.mp3"
+
 
 
     
@@ -60,6 +73,26 @@ function goalscreen(){
 	},2000)
 	
 }
+function p1screen(){
+	$('.player1').addClass('player1-active');
+
+	setTimeout(function(){
+		$('.player1').removeClass('player1-active');
+	
+
+	})
+	
+}
+function p2screen(){
+	$('.player2').addClass('player2-active');
+
+	setTimeout(function(){
+		$('.player2').removeClass('player2-active');
+	
+
+	})
+	
+}
 function Disc() {
 
 		this.startingPosX = boardCenterX;
@@ -80,10 +113,10 @@ function Disc() {
 		
 
 		this.keepControllerInBoard = function() {
-			
+		
 				
 				if (this.x > (boardWidth - this.radius) || this.x < this.radius) {
-
+                            	
 					if (this.x < this.radius) {
 							  this.velocityX = 2;
 						} else {
@@ -93,10 +126,12 @@ function Disc() {
 
 				
 				if (this.y > (boardHeight - this.radius) || this.y < this.radius) {
-
-						if (this.y < this.radius) {
+	                                
+						if (this.y < this.radius)
+						 {
 							  this.velocityY = 2;
-						} else {
+						} else 
+						{
 								this.velocityY = -2;
 						}
 
@@ -104,22 +139,25 @@ function Disc() {
 			
 			
 				if (controller.x > (boardCenterX - controller.radius) && controller.x < boardCenterX) {
+						
 						controller.velocityX = -3;
 				}
 
 			
 				if (controllerTwo.x > boardCenterX && controllerTwo.x < (boardCenterX + (controllerTwo.radius / 2))) {
+						
 						controllerTwo.velocityX = +3;
 				} 
 		},
 
 	
 		this.keepPuckInBoard = function() {
+		
 
 				// Determine if disc is to far right or left
 				// Need to determine if goal scored on x axis as well
 				if (this.x > (boardWidth - this.radius) || this.x < this.radius) {
-
+                          	
 						// Stop puck from getting stuck
 						if (this.x > (boardWidth - this.radius)) {
 								this.x = boardWidth - this.radius;
@@ -129,21 +167,32 @@ function Disc() {
 
 						// Check to see if goal scored
 						if (this.y > (goalPosTop1 + puck.radius) && this.y < (goalPosTop1 + goalHeight1) - puck.radius && this.x >= (boardWidth-2*puck.radius))
-						 {
+						 {  if(p1score<11) { 
+						 	userScore.play();
 								 p1score++;
                         	 updateplayer1(p1score);
                              
                                goalscreen();
 								puck = new Disc(boardCenterX, boardCenterY);
-								
+								}
+								else{
+									p1screen();
+
+								}
 
 						} 
                         else if(this.y>(goalPosTop2 + puck.radius) && this.y < (goalPosTop2 + goalHeight2) - puck.radius)
-                        {
+                        {  if(p2score<11){
+                        	  comScore.play();
                         	  p2score++;
                                updateplayer2(p2score);
                         	 goalscreen();
                         	puck = new Disc(boardCenterX, boardCenterY);
+                           }
+                           else{
+                           	p2screen();
+
+                           }
                         }
 						else {
 								// Reverse X direction 
@@ -153,7 +202,7 @@ function Disc() {
 
 				// Determine if disc is to far up or down
 				if (this.y > (boardHeight - this.radius) || this.y < this.radius) {
-
+                               	
 						// Stop puck from getting stuck
 						if (this.y > (boardHeight - this.radius)) {
 								this.y = boardHeight - this.radius;
@@ -186,8 +235,8 @@ function Disc() {
 						// Check to see if the distance between the two circles is smaller than the added radius
 						// If it is then we know the circles are overlapping								
 						if (distance < addedRadius) {
-								
-								// Had help from Reddit user Kraft_Punk on the below collision math
+								hit.play();
+					
 							
 								//calculate angle, sine, and cosine
 								var angle = Math.atan2(distanceY, distanceX),
@@ -278,7 +327,7 @@ function Disc() {
 
 // Run game functions
 function updateGame() {
-
+       stadium.play();
 		// Clear board
 		boardContext.clearRect(0, 0, boardWidth, boardHeight);
 		// Draw & contain puck
@@ -297,6 +346,7 @@ function updateGame() {
 
 		// Loop
 		requestAnimationFrame(updateGame);
+
 
 }
 
@@ -365,7 +415,7 @@ document.addEventListener("keydown", function(e) {
 // Add puck
 var puck = new Disc();
 
-// Add controller & adjust settings
+// Add contro
 var controller = new Disc();
 controller.color = '#2132CC';
 controller.radius += 10;
@@ -374,7 +424,6 @@ controller.startingPosX = 125;
 controller.mass = 50;
 controller.x = controller.startingPosX;
 
-// Add controller two
 var controllerTwo = new Disc();
 controllerTwo.color = '#2132CC';
 controllerTwo.radius += 10;
@@ -382,8 +431,6 @@ controllerTwo.mass = 50;
 controllerTwo.startingPosX = (boardWidth - 155);
 controllerTwo.acceleration = 5;
 controllerTwo.x = controllerTwo.startingPosX;
-
-// Store controllers
 controllers.push(controller, controllerTwo);
 
 updateGame();

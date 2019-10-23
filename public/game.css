@@ -144,6 +144,33 @@ background-color:#249c28;
   opacity: 0;
 
 }
+.player1{
+   width: 0px;
+  margin-left: -100%;
+  transition: all 1s ease-in-out;
+  opacity: 0;
+
+}
+.player1-active{
+   opacity: 1;
+  width: 100%;
+ margin-left: 150px;
+  transition: all 1s ease-in-out;
+}
+.player2{
+   width: 0px;
+  margin-left: -100%;
+  transition: all 1s ease-in-out;
+  opacity: 0;
+
+}
+.player2-active{
+   opacity: 1;
+  width: 100%;
+ margin-left: 150px;
+  transition: all 1s ease-in-out;
+}
+
 .goal-celebration-active{
   opacity: 1;
   width: 100%;

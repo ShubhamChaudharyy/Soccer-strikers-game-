@@ -1,6 +1,9 @@
 var alias_1;
 var alias_2;
+var socket;
+var io=require('socket.io').listen(server)
 var express =require('express');
+var server=require('http').createServer(app);
 var app=express();
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/js'));
@@ -27,6 +30,8 @@ app.post('/intermediate',(req,res,next)=>{
     else
     	res.render('game',{p1name:alias_1,isAuth:true,issingle:true});
 });
-app.listen(3000,function(){
-	console.log("connected");
-})
+
+  app.listen(3000);
+    
+
+
